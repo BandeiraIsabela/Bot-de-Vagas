@@ -1,0 +1,11 @@
+services:
+  vaga-bot:
+    build: .
+    container_name: vaga-bot
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data
+      - ./resume:/app/resume
+      - ./config:/app/config
