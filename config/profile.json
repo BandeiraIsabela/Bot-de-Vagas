@@ -1,5 +1,5 @@
 {
-  "seuNome": "Isabela Martins Bandeira",
+  "seuNome": "SEU NOME",
 
   "regioes": {
     "brasil": {
@@ -7,26 +7,20 @@
       "idioma": "pt",
       "fontes": ["remotive", "adzuna", "gupy", "linkedin"],
       "adzunaPais": "br",
-      "adzunaOnde": "brasilia",
+      "adzunaOnde": "SUA CIDADE",
       "linkedinLocation": "Brazil",
 
       "cargosAlvo": [
-        "analista de dados junior",
-        "junior data analyst",
-        "estagiário dados",
-        "data analyst trainee",
-        "analista bi junior",
-        "business intelligence junior"
+        "CARGOS E VARIAÇÕES QUE DESEJA ENCONTRAR"
       ],
       "palavrasChaveObrigatorias": [
-        "python", "sql", "power bi", "excel", "dados", "data analyst"
+        "PALAVRAS CHAVES DO SEU CARGO (EX: "python", "java", etc...)"
       ],
       "palavrasChaveDesejaveis": [
-        "r", "streamlit", "scikit-learn", "mysql", "etl", "dashboard",
-        "estatística", "machine learning", "catboost"
+        "PALAVRAS CHAVES QUE PREFERE QUE TAMBEM TENHA NA VAGA (EX: "pandas", "streamlit", etc...)"
       ],
       "localizacao": {
-        "cidades": ["brasília", "df", "remoto", "remote", "home office"],
+        "cidades": ["SUA CIDADE", "SEU ESTADO", "remoto", "remote", "home office"],
         "aceitaSomenteRemoto": false
       },
       "nivel": ["junior", "júnior", "trainee", "estágio", "assistente", "iniciante"],
@@ -66,104 +60,100 @@
   },
 
   "curriculoBase": {
-    "resumo": "Analista de dados em formação, com experiência prática em Python, SQL, Power BI e projetos de ciência de dados (classificação, lógica fuzzy, dashboards). Atualmente estagiária de suporte na Procuradoria Geral do Distrito Federal, cursando Análise e Desenvolvimento de Sistemas na UCB (conclusão prevista em julho/2026).",
+    "resumo": "SEU RESUMO",
     "contato": {
       "email": "SEU_EMAIL_AQUI@gmail.com",
-      "telefone": "(61) 99999-9999",
+      "telefone": "(99) 99999-9999",
       "linkedin": "linkedin.com/in/SEU-PERFIL",
       "portfolio": "SEU-PORTFOLIO-AQUI",
-      "cidade": "Brasília, DF"
+      "cidade": "SUA CIDADE, SEU ESTADO"
     },
     "experiencias": [
       {
-        "cargo": "Estagiária de Suporte",
-        "empresa": "Procuradoria Geral do Distrito Federal (PGDF)",
-        "periodo": "2024 - atual",
+        "cargo": "SEU CARGO",
+        "empresa": "NOME DA EMPRESA",
+        "periodo": "PERIODO",
         "bullets": [
-          "Presto suporte técnico e organizo dados de processos internos",
-          "Atuo com ferramentas de escritório e sistemas internos da PGDF"
+          "SUAS FUNÇÕES"
         ]
       }
     ],
     "projetos": [
       {
-        "nome": "Titanic - Classificação (Kaggle)",
-        "descricao": "Modelo de classificação em Python (scikit-learn/CatBoost) para prever sobrevivência de passageiros, com tratamento de dados e avaliação de métricas."
+        "nome": "PROJETO 1",
+        "descricao": "DESCRIÇÃO DO PROJETO 1"
       },
       {
-        "nome": "Beer Quality - Python vs R",
-        "descricao": "Comparação de pipelines de análise de dados e modelagem em Python e R para avaliação de qualidade de cerveja."
+        "nome": "PROJETO 2",
+        "descricao": "DESCRIÇÃO DO PROJETO 2"
       },
       {
-        "nome": "Fuzzy Disposition Meter",
-        "descricao": "Sistema de lógica fuzzy (scikit-fuzzy) para medição de disposição a partir de variáveis de entrada."
+        "nome": "PROJETO 3",
+        "descricao": "DESCRIÇÃO DO PROJETO 3"
       },
       {
-        "nome": "Neuro-Fuzzy Greenhouse Control",
-        "descricao": "Controlador híbrido neuro-fuzzy (Mamdani + MLP) para controle de estufa, avaliado com RMSE, IAE e teste de Wilcoxon em 20 episódios de simulação."
+        "nome": "PROJETO 4",
+        "descricao": "DESCRIÇÃO DO PROJETO 4"
       }
     ],
     "formacao": [
       {
-        "curso": "Análise e Desenvolvimento de Sistemas",
-        "instituicao": "Universidade Católica de Brasília (UCB)",
-        "periodo": "Conclusão prevista: julho/2026"
+        "curso": "NOME DO CURSO",
+        "instituicao": "NOME DA INSTITUIÇÃO",
+        "periodo": "CONCLUSÃO(CASO ESTEJA CURSANDO COLOQUE A PREVISÃO EM MES/ANO)"
       }
     ],
     "habilidadesTecnicas": [
-      "Python", "R", "SQL", "MySQL", "Power BI", "Excel",
-      "Streamlit", "scikit-learn", "CatBoost", "scikit-fuzzy"
+      "SUA HABILIDADES TECNICAS"
     ]
   },
 
   "curriculoBaseEN": {
-    "resumo": "Junior data analyst in training, with hands-on experience in Python, SQL, Power BI, and data science projects (classification, fuzzy logic, dashboards). Currently a support intern at the Attorney General's Office of the Federal District (Brazil), pursuing a degree in Systems Analysis and Development at Universidade Católica de Brasília (UCB), expected graduation July 2026.",
+    "resumo": "SEU RESUMO EM INGLES",
     "contato": {
       "email": "SEU_EMAIL_AQUI@gmail.com",
-      "telefone": "(61) 99999-9999",
+      "telefone": "(99) 99999-9999",
       "linkedin": "linkedin.com/in/SEU-PERFIL",
       "portfolio": "SEU-PORTFOLIO-AQUI",
-      "cidade": "Brasília, DF - Brazil"
+      "cidade": "SUA CIDADE, SEU ESTADO - SEU PAIS"
     },
     "experiencias": [
       {
-        "cargo": "Support Intern",
-        "empresa": "Attorney General's Office of the Federal District (PGDF)",
-        "periodo": "2024 - present",
+        "cargo": "NOME DO CARGO EM INGLES",
+        "empresa": "NOME DA EMPRESA EM INGLES",
+        "periodo": "PERIDO EM INGLES",
         "bullets": [
-          "Provide technical support and organize data for internal case processes",
-          "Work with office tools and PGDF's internal systems"
+          "SUAS ATRIBUIÇÕES EM INGLES"
         ]
       }
     ],
     "projetos": [
       {
-        "nome": "Titanic - Classification (Kaggle)",
-        "descricao": "Classification model in Python (scikit-learn/CatBoost) to predict passenger survival, including data preprocessing and metric evaluation."
+        "nome": "PROJETO 1 EM INGLES",
+        "descricao": "DESCRIÇÃO DO PROJETO 1 EM INGLES"
       },
       {
-        "nome": "Beer Quality - Python vs R",
-        "descricao": "Comparison of data analysis and modeling pipelines in Python and R for beer quality assessment."
+        "nome": "PROJETO 2 EM INGLES",
+        "descricao": "DESCRIÇÃO DO PROJETO 2 EM INGLES"
       },
       {
-        "nome": "Fuzzy Disposition Meter",
-        "descricao": "Fuzzy logic system (scikit-fuzzy) for measuring disposition from input variables."
+        "nome": "PROJETO 3 EM INGLES",
+        "descricao": "PROJETO 3 EM INGLES"
       },
       {
-        "nome": "Neuro-Fuzzy Greenhouse Control",
-        "descricao": "Hybrid neuro-fuzzy controller (Mamdani + MLP) for greenhouse control, evaluated with RMSE, IAE, and Wilcoxon test across 20 simulation episodes."
+        "nome": "PROJETO 4 EM INGLES",
+        "descricao": "DESCRIÇÃO DO PROJETO 4 EM INGLES"
       }
     ],
     "formacao": [
       {
-        "curso": "Systems Analysis and Development",
-        "instituicao": "Universidade Católica de Brasília (UCB)",
-        "periodo": "Expected graduation: July 2026"
+        "curso": "NOME DO CURSO EM INGLES",
+        "instituicao": "NOME DA INSTITUIÇÃO(PODE MANTER EM PORTUGUES)",
+        "periodo": "CONCLUSÃO EM INGLES"
       }
     ],
     "habilidadesTecnicas": [
-      "Python", "R", "SQL", "MySQL", "Power BI", "Excel",
-      "Streamlit", "scikit-learn", "CatBoost", "scikit-fuzzy"
+      "SUAS HABILIDADES TECNICAS"
     ]
   }
 }
