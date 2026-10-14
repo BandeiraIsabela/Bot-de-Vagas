@@ -40,6 +40,77 @@ listagem (só título/empresa/local), o critério de palavras-chave é um pouco
 mais frouxo pra essas duas fontes — veja `FONTES_COM_DESCRICAO_LIMITADA` em
 `src/matcher.js` se quiser ajustar.
 
+Atualmente não existe nenhuma API confiavel e/ou estavel para a GUPY, 
+nesse caso durante os logs vai aparecer como quebrado
+
+## Aba Manual: gerar currículo para qualquer vaga
+
+Além da busca automática, você pode gerar um currículo ajustado para qualquer
+vaga que encontrar por conta própria (indicação, grupo, site que o bot não
+cobre, vaga de uma plataforma com proteção anti-bot, etc.). Para isso, o bot
+cria automaticamente uma aba chamada **Manual** na mesma planilha, com estas
+colunas:
+
+| Coluna | Nome | O que preencher |
+|---|---|---|
+| A | Link da Vaga | **Obrigatório.** O link da vaga. |
+| B | Cargo (opcional) | Título da vaga. |
+| C | Empresa (opcional) | Nome da empresa. |
+| D | Idioma (pt/en) | `pt` para currículo em português, `en` para inglês. Em branco, usa português. |
+| E | Status | **O bot preenche.** Não escreva nada aqui. |
+| F | Link do Currículo (Drive) | **O bot preenche.** |
+| G | Descrição da vaga (cole aqui, opcional) | O texto da descrição da vaga, copiado por você. |
+
+### Como usar
+
+1. Abra a aba **Manual** da planilha.
+2. Na primeira linha vazia, cole o link da vaga na coluna **A**.
+3. (Recomendado) Preencha **Cargo**, **Empresa** e **Idioma**.
+4. (Recomendado) Abra a vaga no seu navegador, copie o texto da descrição e
+   cole na coluna **G**.
+5. Aguarde o próximo ciclo do bot (até 10 minutos). Ele vai preencher
+   sozinho as colunas **Status** e **Link do Currículo (Drive)**.
+6. Clique no link da coluna **F** para abrir o currículo ajustado.
+
+### Como o bot usa a descrição
+
+O bot compara o texto da vaga com as suas palavras-chave (definidas no
+`profile.json`) e coloca no topo da seção de habilidades do currículo as
+que aparecem na vaga. Ele escolhe a fonte do texto nesta ordem:
+
+1. **O que você colou na coluna G.** É o jeito mais confiável, e o único que
+   funciona bem em sites com proteção anti-bot (como o Indeed) ou que exigem
+   login (como o LinkedIn).
+2. **O texto da própria página**, se a coluna G estiver vazia. O bot tenta
+   baixar a página da vaga sozinho. Isso funciona em páginas simples de
+   carreira, mas costuma falhar em sites que exigem login ou que carregam o
+   conteúdo via JavaScript.
+3. **Nenhum texto**, se as duas opções acima falharem. O currículo ainda é
+   gerado normalmente, com o seu currículo base, só sem o destaque de
+   palavras-chave
+
+   ### Status possíveis
+
+| Status | Significado |
+|---|---|
+| *(vazio)* | A linha ainda não foi processada. Será no próximo ciclo. |
+| `Pronto` | O currículo foi gerado e o link está na coluna F. |
+| `Erro: ...` | Algo falhou. A mensagem explica o motivo. |
+
+Para **tentar de novo** uma linha com erro (ou gerar o currículo novamente
+depois de colar uma descrição melhor), apague o conteúdo da célula de
+**Status** e das células E e F dessa linha. No próximo ciclo ela será
+processada de novo.
+
+### Dicas
+
+- Não apague nem renomeie a aba **Manual** nem o cabeçalho da primeira
+  linha. O bot depende deles.
+- Você pode colar várias vagas de uma vez, uma por linha. O bot processa
+  todas as pendentes no mesmo ciclo.
+- O currículo gerado fica salvo na sua pasta do Google Drive e também em
+  `resume/gerados/`, no seu computador.
+
 ## Antes de rodar
 
 Precisa ficar **rodando num computador/servidor seu**, ligado, o tempo todo.
@@ -127,15 +198,49 @@ vaga-bot/
 │   ├── state.js                       ← controla vagas já processadas
 │   ├── googleSheets.js                 ← integração Sheets + Drive (OAuth2)
 │   └── sources/
-│       ├── remotive.js, adzuna.js        ← fontes estáveis
-│       ├── gupy.js, linkedin.js            ← fontes best-effort
-│       └── indeed.js                        ← fonte mais frágil
+│       ├── remotive.js, adzuna.js, remoteok.js, arbeitnow.js        ← fontes estáveis
+│       ├── linkedin.js, jobicy.js, jooble.js, careerjet.js    ← fontes best-effort
+│       └── gupy.js,                        ← fonte mais frágil
 ├── data/, resume/gerados/         ← gerado automaticamente
-└── .env                           ← suas configurações (não compartilhe)
+└── .env                           ← suas configurações (não compartilhe suas chaves)
 ```
+## Conteudo do ENV.:
+
+Copie este arquivo para ".env" e preencha suas credenciais
+
+Crie grátis em https://developer.adzuna.com/ (necessário pra vagas via Adzuna)
+- ADZUNA_APP_ID= 
+- ADZUNA_APP_KEY= 
+
+Crie grátis em https://ca.jooble.org/api/about (necessário pra vagas via
+Jooble no Canadá — IMPORTANTE: cadastre-se no domínio ca.jooble.org, não
+no jooble.org genérico, senão a chave só cobre vagas dos EUA).
+ATENÇÃO: limite vitalício de 500 chamadas por chave (não é por mês!).
+Veja o comentário em src/sources/jooble.js pra detalhes.
+- JOOBLE_API_KEY= 
+
+Crie grátis em https://www.careerjet.com/partners/signup.html
+(necessário pra vagas via Careerjet no Canadá)
+- CAREERJET_AFFID=
+
+Credenciais OAuth do Google (tipo "Desktop app"), criadas no Google Cloud
+Console. Veja o README para o passo a passo completo.
+- GOOGLE_OAUTH_CLIENT_ID= 
+- GOOGLE_OAUTH_CLIENT_SECRET= 
+
+Caminho (dentro do container) do token gerado por scripts/setup-google-auth.js
+- GOOGLE_OAUTH_TOKEN_PATH=/app/config/google-token.json
+
+ID da planilha do Google Sheets (pegue da URL: .../spreadsheets/d/ESTE_ID/edit)
+- GOOGLE_SHEET_ID= 
+
+ID da pasta do Google Drive (pegue da URL: .../drive/folders/ESTE_ID)
+- GOOGLE_DRIVE_FOLDER_ID= 
 
 ## Segurança
 
-- Nunca compartilhe `config/google-token.json` nem o `.env` publicamente.
+- Nunca compartilhe `config/google-token.json` nem as chaves do `.env` publicamente.
 - Pra revogar acesso: https://myaccount.google.com/permissions
 - Currículos no Drive ficam com link "qualquer pessoa com o link pode ver".
+
+## Versão Atual: 1.0
